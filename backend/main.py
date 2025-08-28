@@ -141,8 +141,10 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
 # Authentication endpoints
 @app.post("/register", response_model=UserResponse)
 def register(user: UserCreate, db: Session = Depends(get_db)):
+    print(f"Registration attempt for email: {user.email}")  # Debug log
     db_user = get_user_by_email(db, email=user.email)
     if db_user:
+        print(f"Email already exists: {user.email}")  # Debug log
         raise HTTPException(
             status_code=400,
             detail="Email already registered"
@@ -152,6 +154,7 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
+    print(f"User successfully registered: {user.email}")  # Debug log
     return db_user
 
 @app.post("/token", response_model=Token)
