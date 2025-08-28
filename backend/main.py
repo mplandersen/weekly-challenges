@@ -156,8 +156,10 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
 
 @app.post("/token", response_model=Token)
 def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    print(f"Login attempt for username: {form_data.username}")  # Debug log
     user = authenticate_user(db, form_data.username, form_data.password)
     if not user:
+        print(f"Authentication failed for user: {form_data.username}")  # Debug log
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect email or password",
