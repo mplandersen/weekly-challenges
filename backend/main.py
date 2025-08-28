@@ -40,7 +40,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 # Pydantic models
 class UserCreate(BaseModel):
-    email: EmailStr
+    email: str
     password: str
 
 class UserResponse(BaseModel):
