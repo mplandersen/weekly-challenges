@@ -21,7 +21,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Weekly Challenges API", version="1.0.0")
 
 # CORS middleware
-origins = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(",")
+origins = os.getenv("CORS_ORIGINS", "https://weekly-challenges.vercel.app,http://localhost:3000,http://127.0.0.1:3000").split(",")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
