@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, Plus, Check, X, MessageSquare, LogOut, Eye, EyeOff } from 'lucide-react';
 
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:8000';
-const APP_VERSION = "1.0.0";
+const APP_VERSION = "1.0.1";
 
 interface Challenge {
   id: number;
@@ -295,9 +295,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-sm mx-auto bg-white min-h-screen">
+      <div className="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-blue-500 text-white p-4">
+        <div className="bg-blue-500 text-white p-4 rounded-lg mb-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Calendar size={24} />
@@ -313,11 +313,11 @@ function App() {
         </div>
 
         {/* Main Content */}
-        <div className="p-4">
+        <div>
           {currentChallenge ? (
             <div className="space-y-6">
               {/* Current Challenge */}
-              <div className="bg-blue-50 rounded-lg p-4">
+              <div className="bg-white rounded-lg shadow-md p-6 mb-6">
                 <h2 className="text-lg font-semibold text-gray-900 mb-2">
                   Current Challenge
                 </h2>
@@ -328,9 +328,9 @@ function App() {
               </div>
 
               {/* 7-Day Grid */}
-              <div className="bg-white rounded-lg border border-gray-200 p-4">
+              <div className="bg-white rounded-lg shadow-md p-6">
                 <h3 className="text-md font-medium text-gray-900 mb-4">This Week</h3>
-                <div className="grid grid-cols-7 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
                   {dayNames.map((day, index) => {
                     const entry = dailyEntries.find(e => e.day_index === index);
                     return (
@@ -364,7 +364,7 @@ function App() {
               </div>
             </div>
           ) : (
-            <div className="text-center py-8">
+            <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <Calendar className="mx-auto h-16 w-16 text-gray-400 mb-4" />
               <p className="text-gray-600 mb-4">No active challenge</p>
             </div>
