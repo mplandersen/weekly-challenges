@@ -1,16 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f9fafb;
+  background: linear-gradient(135deg, #0f172a 0%, #172554 100%);
+  color: #f1f5f9;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Basic utility classes similar to Tailwind */
@@ -62,15 +67,18 @@ code {
 .mx-auto { margin-left: auto; margin-right: auto; }
 .flex { display: flex; }
 .grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid-cols-7 { grid-template-columns: repeat(7, minmax(0, 1fr)); }
 .gap-2 { gap: 0.5rem; }
 .gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
 .space-x-2 > * + * { margin-left: 0.5rem; }
 .space-x-3 > * + * { margin-left: 0.75rem; }
 .space-y-3 > * + * { margin-top: 0.75rem; }
 .space-y-4 > * + * { margin-top: 1rem; }
 .space-y-6 > * + * { margin-top: 1.5rem; }
 .items-center { align-items: center; }
+.flex-col { flex-direction: column; }
 .justify-center { justify-content: center; }
 .justify-between { justify-content: space-between; }
 .flex-1 { flex: 1 1 0%; }
@@ -78,6 +86,7 @@ code {
 .h-12 { height: 3rem; }
 .h-16 { height: 4rem; }
 .max-w-sm { max-width: 24rem; }
+.max-w-4xl { max-width: 56rem; }
 .text-sm { font-size: 0.875rem; }
 .text-md { font-size: 1rem; }
 .text-lg { font-size: 1.125rem; }
@@ -122,3 +131,63 @@ code {
 .border-2 { border-width: 2px; }
 .order-by { order: 1; }
 .border-t { border-top-width: 1px; }
+.rounded-full { border-radius: 9999px; }
+.rounded-3xl { border-radius: 1.5rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+/* New color utilities */
+.text-blue-300 { color: #93c5fd; }
+.text-purple-400 { color: #c084fc; }
+.text-white\/90 { color: rgba(255, 255, 255, 0.9); }
+.text-white\/80 { color: rgba(255, 255, 255, 0.8); }
+.bg-white\/10 { background-color: rgba(255, 255, 255, 0.1); }
+
+/* Responsive utilities (sm, md) */
+@media (min-width: 640px) {
+  .sm\:p-6 { padding: 1.5rem; }
+  .sm\:p-8 { padding: 2rem; }
+  .sm\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 768px) {
+  .md\:p-10 { padding: 2.5rem; }
+  .md\:grid-cols-7 { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+}
+
+/* Dark theme components */
+.challenge-card {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(100, 116, 139, 0.4);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.05);
+  animation: fadeIn 1s ease-out;
+}
+
+.progress-bar {
+  background-image: linear-gradient(to right, #22d3ee, #6366f1);
+  transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.7);
+}
+
+.day-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.day-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+}
+
+.button-primary {
+  background-image: linear-gradient(to right, #6366f1, #8b5cf6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 5px 20px rgba(139, 92, 246, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
