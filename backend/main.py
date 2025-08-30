@@ -295,6 +295,14 @@ def get_challenge_days(
 def read_root():
     return {"message": "Weekly Challenges API is running!"}
 
+@app.get("/version")
+def get_version():
+    return {
+        "version": "1.0.0", 
+        "release_date": "2025-08-28",
+        "description": "Initial production release - Weekly challenge tracker with user auth, 7-day progress grid, and mobile-first design"
+    }
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8000))

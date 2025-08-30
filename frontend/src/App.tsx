@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, Plus, Check, X, MessageSquare, LogOut, Eye, EyeOff } from 'lucide-react';
 
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:8000';
+const APP_VERSION = "1.0.0";
 
 interface Challenge {
   id: number;
@@ -386,6 +387,11 @@ function App() {
               <Calendar size={20} />
               <span>Challenge History</span>
             </button>
+          </div>
+          
+          {/* Version Footer */}
+          <div className="text-xs text-gray-500 text-center mt-4">
+            v{APP_VERSION}
           </div>
         </div>
 
